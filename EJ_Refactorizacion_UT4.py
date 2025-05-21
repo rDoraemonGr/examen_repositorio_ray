@@ -42,25 +42,11 @@ class utilidades:
         for l in lista:
             print(f"* {l}")
 
+    
 # Función principal
 def principal():
     
-    receta1 = recetaVegetariana("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"]) # 2. Cambio el nombre para que corresponda con el nuevo nombre y r1 a receta1
-    receta2 = recetaNoVegetariana("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"]) # 2. Cambio el nombre para que corresponda con el nuevo nombre y r2 a receta2
-    
-    # Duplicación de código al imprimir
-    print("== Mostrar recetas ==")
-    utilidades.imprimir_receta(receta1) # 2. De r1 a receta1
-    utilidades.imprimir_receta(receta2) # 2. De r2 a receta2
-
-    # Código duplicado para mostrar ingredientes
-    print("Ingredientes de Ensalada César:")
-    for ingrediente in receta1.ingrediente: # 2.1. Cambie receta1.i por receta.ingrediente
-        print(f"* {ingrediente}")
-    
-    print("Ingredientes de Pollo al horno:")
-    for ingrediente in receta2.ingrediente: # 2.1. Cambie receta1.i por receta.ingrediente
-        print(f"* {ingrediente}")
+   # 4. Eliminamos todas las funciones repetidas.
 
 
 # Ejecutar el programa
