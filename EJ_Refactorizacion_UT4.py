@@ -2,46 +2,39 @@ from abc import ABC, abstractmethod
 
 # Clase abstracta para representar una receta
 class receta(ABC):
-    def __init__(self, n, i, p):
-        self.n = n  # nombre
-        self.i = i  # ingredientes
-        self.p = p  # pasos
+    def __init__(self, nombre, ingrediente, paso): # 2. Modifico las variables "n", "i" y "p" para que sean mas claros
+        self.nombre = nombre  # 2. nombre
+        self.ingrediente = ingrediente  # 2. ingredientes
+        self.paso = paso  # 2. pasos
 
     @abstractmethod
-    def mostrar(self):
-        pass
-
+    def mostrar(self): # 3. Movemos todo el método mostrar a la clase principal 
+        print(f"Receta: {self.nombre}")
+        print("Ingredientes:")
+        for ingrediente in self.ingrediente:
+            print(f"- {ingrediente}")
+        print("Pasos:")
+        for paso in self.paso:
+            print(f"{paso}")
 
 # Clase para recetas vegetarianas
-class recV(receta):
-    def mostrar(self):
-        print(f"Receta vegetariana: {self.n}")
-        print("Ingredientes:")
-        for ing in self.i:
-            print(f"- {ing}")
-        print("Pasos:")
-        for paso in self.p:
-            print(f"{paso}")
+class recetaVegetariana(receta): 
+    def mostrar(self): # 3. Extracción del método mostrar
+        return super().mostrar()
 
 
 # Clase para recetas no vegetarianas
-class recNV(receta):
-    def mostrar(self):
-        print(f"Receta NO vegetariana: {self.n}")
-        print("Ingredientes:")
-        for ing in self.i:
-            print(f"- {ing}")
-        print("Pasos:")
-        for paso in self.p:
-            print(f"{paso}")
+class recetaNoVegetariana(receta):
+    def mostrar(self): # 3. Extracción del método mostrar
+        return super().mostrar()
 
 
 # Clase con utilidades del restaurante
 class utilidades:
     @staticmethod
-    def imprimir_receta(r):
+    def imprimir_receta(receta): # 2. De r a receta
         print("====================================")
-        r.mostrar()
+        receta.mostrar()
         print("====================================")
 
     @staticmethod
@@ -51,22 +44,23 @@ class utilidades:
 
 # Función principal
 def principal():
-    r1 = recV("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"])
-    r2 = recNV("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"])
+    
+    receta1 = recetaVegetariana("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"]) # 2. Cambio el nombre para que corresponda con el nuevo nombre y r1 a receta1
+    receta2 = recetaNoVegetariana("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"]) # 2. Cambio el nombre para que corresponda con el nuevo nombre y r2 a receta2
     
     # Duplicación de código al imprimir
     print("== Mostrar recetas ==")
-    utilidades.imprimir_receta(r1)
-    utilidades.imprimir_receta(r2)
+    utilidades.imprimir_receta(receta1) # 2. De r1 a receta1
+    utilidades.imprimir_receta(receta2) # 2. De r2 a receta2
 
     # Código duplicado para mostrar ingredientes
     print("Ingredientes de Ensalada César:")
-    for ing in r1.i:
-        print(f"* {ing}")
+    for ingrediente in receta1.ingrediente: # 2.1. Cambie receta1.i por receta.ingrediente
+        print(f"* {ingrediente}")
     
     print("Ingredientes de Pollo al horno:")
-    for ing in r2.i:
-        print(f"* {ing}")
+    for ingrediente in receta2.ingrediente: # 2.1. Cambie receta1.i por receta.ingrediente
+        print(f"* {ingrediente}")
 
 
 # Ejecutar el programa
