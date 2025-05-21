@@ -42,11 +42,26 @@ class utilidades:
         for l in lista:
             print(f"* {l}")
 
-    
+def crear_receta(nombre1, ingrediente1, paso1): # 4. Añadimos la función que nos servirá para la creación de las recetas
+    nombre1 = input("Introduce el nombre de la receta: ")
+    ingrediente1 = []
+    print("Introduce los ingredientes (escribe 'fin' para terminar): ")
+    while True:
+        ingrediente = input("- ")
+        if ingrediente.lower() == "fin":
+            break
+        ingrediente1.append(ingrediente)
+    paso1 = []
+    print("Introduce los pasos (escirbe 'fin' para terminar): ")
+    while True:
+        paso = input("- ")
+        if ingrediente.lower() == "fin":
+            break
+        paso1.append(ingrediente)
+    return nombre1, ingrediente1, paso1
+        
 # Función principal
 def principal():
-    
-   # 4. Eliminamos todas las funciones repetidas.
 
 
 # Ejecutar el programa
