@@ -32,17 +32,18 @@ class recetaNoVegetariana(receta):
 # Clase con utilidades del restaurante
 class utilidades:
     @staticmethod
-    def imprimir_receta(receta): # 2. De r a receta
+    def imprimir_receta(receta1, receta2): # 2. De r a receta
         print("====================================")
-        receta.mostrar()
+        receta1.mostrar()
         print("====================================")
+        receta2.mostrar()
 
     @staticmethod
     def mostrar_lista_ingredientes(lista):
         for l in lista:
             print(f"* {l}")
 
-def crear_receta(nombre1, ingrediente1, paso1): # 4. Añadimos la función que nos servirá para la creación de las recetas
+def crear_receta(): # 4. Añadimos la función que nos servirá para la creación de las recetas
     nombre1 = input("Introduce el nombre de la receta: ")
     ingrediente1 = []
     print("Introduce los ingredientes (escribe 'fin' para terminar): ")
@@ -63,6 +64,23 @@ def crear_receta(nombre1, ingrediente1, paso1): # 4. Añadimos la función que n
 # Función principal
 def principal():
 
+    respuesta = input("Quíeres crear una receta?:")
+    if respuesta.lower() == "si":
+        nombre1, ingrediente1, paso1 = crear_receta() # 5. Creamos un menú para que el usuario pueda introducir los datos por si mismo
+        tipo = int(input("Receta Vegetariana(1) o No vegetariana(2)?: "))
+        if tipo == 1:
+            print("- Receta Vegetariana -")
+            receta1 = recetaVegetariana(nombre1, ingrediente1, paso1)
+        elif tipo == 2:
+            print("- Receta No Vegetariana -")
+            carne = input("Indica el tipo de carne: ")
+            receta2 = recetaNoVegetariana(nombre1, ingrediente1, paso1, carne)
+        else:
+            print("No has introducido una opción correcta")
+    elif respuesta.lower() == "no":
+        print("Has decidido no crear ninguna receta.")
+    else:
+        print("No has introducido una respuesta válida.")
 
 # Ejecutar el programa
 if __name__ == "__main__":
